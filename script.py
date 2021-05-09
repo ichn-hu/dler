@@ -103,7 +103,7 @@ def parse_ss(ss_link):
 SCRIPT_TEMPLATE = """
 #!/bin/bash
 echo "connectting {group} - {name}"
-ss-local -s {server} -p {server_port} -k {password} -m {method} {options} {additions}
+ss-local -s {server} -p {server_port} -b 0.0.0.0 -k {password} -m {method} {options} {additions}
 """
 
 def make_script(config):
