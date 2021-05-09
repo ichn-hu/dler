@@ -132,14 +132,14 @@ def read_subscribe(sub_url):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="dler-ss parses the subscription into scripts")
+    parser = argparse.ArgumentParser(description="dler parses the subscription into ss scripts")
     parser.add_argument('-t', '--token', action="store", default="", required=False, help="subscribe_token, used in {}".format(SUB_LINK_TEMPLATE.format("$subscribe_token")))
     parser.add_argument('-s', '--subscribe',
                         action="store",
                         default="",
                         required=False,
                         help="read from a subscribe url or a local file")
-    parser.add_argument('-d', '--dir', default='.', help="directory to place the connections")
+    parser.add_argument('-d', '--dir', default='ss', help="directory to place the connections")
     parser.add_argument('-c', '--connect', default='', help='execute a connection script given the name. if the provided name matches the prefix of multiple files, it will randomly pick one.')
     parser.add_argument('-p', '--port', default=1080, help='port to use when connect')
     option = parser.parse_args()
@@ -167,4 +167,4 @@ if __name__ == "__main__":
         pick = random.choice(scripts)
         logging.info('pick %s, connect using port %d', pick, option.port)
         os.system('%s -v -l %d' % (os.path.join(option.dir, pick), option.port))
-        
+    
