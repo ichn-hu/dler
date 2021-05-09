@@ -56,6 +56,10 @@ RUN apk add python3
 
 WORKDIR /dler
 COPY . /dler
-ENTRYPOINT [ "python3", "dler-ss.py", "-t", "eSYXi8CBcENs6iYY", "-c", "TW" ]
+
+ENV TOKEN DJNVz40XPswqYnrz
+ENV CODE TW
+
+CMD python3 script.py -t $TOKEN -c $CODE
 # CMD [ "/bin/sh -c sleep\ 1000" ]
 # CMD [ "ss-server", "-c","/server.json","-u"]

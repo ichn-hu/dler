@@ -9,9 +9,9 @@ Example usage.
 
 ## Parse the subscription
 
-You need to register on the service provider, use [register link](https://dler.best/auth/register?affid=64191) to register.
+You need to register on the service provider, use [register link](https://dler.best/auth/register?affid=64191) to register (disclaim: I will have commission return if you pay through this link, but I don't guarantee any usability).
 
-And you will get a `$subscribe_token`, something like `DJNVz40XPswqYnrz`.
+And you will get a `$subscribe_token`, something like `DJNVz40XPswqYnrz` (note this token is randomly generated, and should not be usable, replace it with yours).
 
 Use
 
@@ -43,11 +43,21 @@ You need to have `ss-local` and `simple-obfs` installed in order to execute the 
 
 Or you can use the Dockerfile.
 
+## use docker
+
+Make sure you have docker installed.
+
+```
+docker pull ichnhu/dler
+```
+
+docker run ichnhu/dler 
+
 ## ss to http
 
 Many shell only supports HTTP proxy, you might need to convert ss to HTTP. Try `polipo` or `privoxy`.
 
-For `polipo`:
+For `polipo` (I am on archlinux with yay as package manager, figure out it on your own if you use different distro):
 
 ```
 yay -S polipo
