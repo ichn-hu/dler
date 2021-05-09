@@ -54,6 +54,8 @@ RUN apk upgrade --update \
 
 RUN apk add python3
 
+RUN apk add privoxy
+
 WORKDIR /dler
 COPY . /dler
 

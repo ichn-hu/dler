@@ -5,6 +5,7 @@ import logging
 import argparse
 import random
 from collections import defaultdict
+import subprocess
 import urllib.parse, urllib.request
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
@@ -166,5 +167,14 @@ if __name__ == "__main__":
         logging.info('found %d matched script', len(scripts))
         pick = random.choice(scripts)
         logging.info('pick %s, connect using port %d', pick, option.port)
-        os.system('%s -v -l %d' % (os.path.join(option.dir, pick), option.port))
+        if os.path.exists('/usr/sbin/privoxy'):
+            privoxy = subprocess.Popen(['/usr/sbin/privoxy', '--no-daemon', 'privoxy_config'])
+        else:
+            privoxy = None
+        client = subprocess.Popen(['sh', '-c', '%s -v -l %d' % (os.path.join(option.dir, pick), option.port)])
+        client.wait()
+        if privoxy is not None:
+            privoxy.wait()
+
+        
     
