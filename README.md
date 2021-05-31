@@ -47,11 +47,20 @@ Or you can use the Dockerfile.
 
 Make sure you have docker installed.
 
+Put your `$subscribe_token` in `.env` file like
+
 ```
-docker pull ichnhu/dler
+TOKEN=DJNVz40XPswqYnrz
 ```
 
-docker run ichnhu/dler 
+and run
+
+```
+docker pull ichnhu/dler
+docker run --env-file .env -p 1080:1080 -p 1080:1080/udp -p 2080:2080 -p 2080:2080/udp ichnhu/dler
+```
+
+Then you will have socks5 proxy on 1080 and http proxy on 2080 on your host machine.
 
 ## ss to http
 
